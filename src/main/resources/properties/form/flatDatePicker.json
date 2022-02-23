@@ -1,0 +1,320 @@
+[{
+    "title" : "@@form.flatDatePicker.editFlatDatePicker@@",
+    "properties" : [{
+        "name" : "id",
+        "label" : "@@form.datepicker.id@@",
+        "type" : "autocomplete",
+        "required" : "True",
+        "regex_validation" : "^[a-zA-Z0-9_]+$",
+        "validation_message" : "@@form.datepicker.invalidId@@",
+        "options_callback" : "FormBuilder.getAllFieldOptions"
+    },
+    {
+        "name" : "label",
+        "label" : "@@form.datepicker.label@@",
+        "type" : "textfield",
+        "required" : "True",
+        "value" : "Date Picker"
+    },
+    {
+        "name" : "datePickerType",
+        "label" : "@@form.flatDatePicker.datePickerMode@@",
+        "type" : "selectbox",
+        "value" : "",
+        "options" : [
+        {
+            "value" : "single",
+            "label" : "@@form.flatDatePicker.datePickerMode.single@@"
+        },
+        {
+            "value" : "range",
+            "label" : "@@form.flatDatePicker.datePickerMode.range@@"
+        }
+        ]
+    },
+    {
+        "name" : "rangeSaveFields",
+        "label" : "@@form.flatDatePicker.rangeSaveFields@@",
+        "description" : "@@form.flatDatePicker.rangeSaveFields.desc@@",
+        "type" : "selectbox",
+        "value" : "",
+        "control_field": "datePickerType",
+        "control_value": "range",
+        "control_use_regex": "false",
+        "options" : [
+            {
+                "value" : "true",
+                "label" : "@@form.flatDatePicker.rangeSaveFields.enable@@"
+            },
+            {
+                "value" : "false",
+                "label" : "@@form.flatDatePicker.rangeSaveFields.disable@@"
+            }
+        ]
+    },
+    {
+        "name" : "datePickerTime",
+        "label" : "@@form.datepicker.datePickerType@@",
+        "type" : "selectbox",
+        "value" : "",
+        "options" : [
+            {
+                "value" : "dateOnly",
+                "label" : "@@form.datepicker.datePickerType.dateOnly@@"
+            },
+            {
+                "value" : "dateTime",
+                "label" : "@@form.datepicker.datePickerType.dateTime@@"
+            },
+            {
+                "value" : "timeOnly",
+                "label" : "@@form.datepicker.datePickerType.timeOnly@@"
+            }
+        ]
+    }/*,
+    {
+        name : 'allowManual',
+        label : '@@form.datepicker.allowManual@@',
+        type : 'checkbox',
+        value : 'False',
+        options : [{
+            value : 'true',
+            label : ''
+        }]
+    }*/
+]},
+{
+    "title" : "@@form.datepicker.advancedOptions@@",
+    "properties" : [{
+        "label" : "@@form.datepicker.data@@",
+        "type" : "header"
+    },
+    {
+        "name" : "value",
+        "label" : "@@form.datepicker.value@@",
+        "type" : "textfield"
+    },
+    {
+        "name" : "dataFormat",
+        "label" : "@@form.datepicker.dataFormat@@",
+        "type" : "textfield",
+        "value" : "Y-m-d",
+        "description" : "@@form.flatDatePicker.dataFormat.eg@@"
+    },
+    {
+        "name" : "format",
+        "label" : "@@form.datepicker.format@@",
+        "type" : "textfield",
+        "value" : "m/d/Y H:i",
+        "description" : "@@form.flatDatePicker.displayFormat.eg@@"
+    },
+    {
+        "name" : "format24hr",
+        "label" : "@@form.datepicker.24hr@@",
+        "type" : "checkbox",
+        "value" : "true",
+        "control_field": "datePickerTime",
+        "control_value": "dateTime|timeOnly",
+        "control_use_regex": "true",
+        "options" : [{
+            "value" : "true",
+            "label" : ""
+        }]
+    },
+    {
+        "label" : "@@form.datepicker.validation@@",
+        "type" : "header"
+    },
+    {
+        "name" : "validator",
+        "label" : "@@form.datepicker.validator@@",
+        "type" : "elementselect",
+        "options_ajax" : "[CONTEXT_PATH]/web/property/json/getElements?classname=org.joget.apps.form.model.FormValidator",
+        "url" : "[CONTEXT_PATH]/web/property/json[APP_PATH]/getPropertyOptions"
+    },
+    {
+        "name" : "minDate",
+        "label" : "@@form.flatDatePicker.minDate@@",
+        "type" : "textfield",
+        "value" : "",
+        "description" : "@@form.flatDatePicker.minDate.desc@@"
+    },
+    {
+        "name" : "maxDate",
+        "label" : "@@form.flatDatePicker.maxDate@@",
+        "type" : "textfield",
+        "value" : "",
+        "description" : "@@form.flatDatePicker.maxDate.desc@@"
+    },
+    
+    ]
+},
+{
+    "title" : "@@form.flatDatePicker.whiteBlackListing@@",
+    "properties" : [
+        {
+            "name" : "whiteBlackListing",
+            "label" : "@@form.flatDatePicker.whiteBlackListing@@",
+            "type" : "selectbox",
+            "value" : "",
+            "options" : [
+                {
+                    "value" : "",
+                    "label" : "@@form.flatDatePicker.whiteBlackListing.none@@"
+                },
+                {
+                    "value" : "enable",
+                    "label" : "@@form.flatDatePicker.whiteBlackListing.whiteList@@"
+                },
+                {
+                    "value" : "disable",
+                    "label" : "@@form.flatDatePicker.whiteBlackListing.blackList@@"
+                }
+            ]
+        },
+        {
+            "name" : "whiteBlackListingBinder",
+            "label" : "@@userview.calendarMenu.binder@@",
+            "control_field": "whiteBlackListing",
+            "control_value": "enable|disable",
+            "control_use_regex": "true",
+            "type" : "elementselect",
+            "options_ajax" : "[CONTEXT_PATH]/web/property/json/getElements?classname=org.joget.apps.datalist.model.DataListBinderDefault",
+            "url" : "[CONTEXT_PATH]/web/property/json[APP_PATH]/getPropertyOptions"
+        },
+        {
+            "name" : "whiteBlackListingBinderFrom",
+            "label" : "@@form.flatDatePicker.whiteBlackListing.from@@",
+            "description" : "@@form.flatDatePicker.whiteBlackListing.from.desc@@",
+            "control_field": "whiteBlackListing",
+            "control_value": "enable|disable",
+            "control_use_regex": "true",
+            "type" : "selectbox",
+            "options_ajax_on_change" : "id:whiteBlackListingBinder.className;binderId:whiteBlackListingBinder.className;binderJson:whiteBlackListingBinder.properties",
+            "options_ajax" : "[CONTEXT_PATH]/web/json/console/app[APP_PATH]/builder/binder/columns",
+            "options_ajax_mapping" : {"arrayObj": "columns", "value": "name", "label": "label", "addEmpty": true},
+            "options_ajax_method" : "POST"
+        },
+        {
+            "name" : "whiteBlackListingBinderTo",
+            "label" : "@@form.flatDatePicker.whiteBlackListing.to@@",
+            "description" : "@@form.flatDatePicker.whiteBlackListing.to.desc@@",
+            "control_field": "whiteBlackListing",
+            "control_value": "enable|disable",
+            "control_use_regex": "true",
+            "type" : "selectbox",
+            "options_ajax_on_change" : "id:whiteBlackListingBinder.className;binderId:whiteBlackListingBinder.className;binderJson:whiteBlackListingBinder.properties",
+            "options_ajax" : "[CONTEXT_PATH]/web/json/console/app[APP_PATH]/builder/binder/columns",
+            "options_ajax_mapping" : {"arrayObj": "columns", "value": "name", "label": "label", "addEmpty": true},
+            "options_ajax_method" : "POST"
+        },
+        {
+            "name" : "whiteBlackListingBinderDataFormat",
+            "label" : "@@form.flatDatePicker.whiteBlackListing.binder.dataFormat@@",
+            "description" : "@@form.flatDatePicker.whiteBlackListing.binder.dataFormat.desc@@",
+            "type" : "textfield",
+            "control_field": "whiteBlackListing",
+            "control_value": "enable|disable",
+            "control_use_regex": "true"
+        },
+        {
+            "name" : "whiteBlackListingCustomDef",
+            "label" : "@@form.flatDatePicker.whiteBlackListing.customDef@@",
+            "description" : "@@form.flatDatePicker.whiteBlackListing.customDef.desc@@",
+            "type" : "codeeditor",
+            "mode" : "html",
+            "control_field": "whiteBlackListing",
+            "control_value": "enable|disable",
+            "control_use_regex": "true"
+        }
+    ]
+},
+{
+    "title" : "@@form.datepicker.ui@@",
+    "properties" : [
+        {
+        "name" : "theme",
+        "label" : "@@form.flatDatePicker.theme@@",
+        "description" : "@@form.flatDatePicker.theme.desc@@",
+        "type" : "selectbox",
+        "value" : "",
+        "options" : [
+            {
+                "value" : "",
+                "label" : "@@form.flatDatePicker.theme.default@@"
+            },
+            {
+                "value" : "material_red.css",
+                "label" : "@@form.flatDatePicker.theme.materialRed@@"
+            },
+            {
+                "value" : "material_orange.css",
+                "label" : "@@form.flatDatePicker.theme.materialOrange@@"
+            },
+            {
+                "value" : "material_blue.css",
+                "label" : "@@form.flatDatePicker.theme.materialBlue@@"
+            },
+            {
+                "value" : "material_green.css",
+                "label" : "@@form.flatDatePicker.theme.materialGreen@@"
+            },
+            {
+                "value" : "dark.css",
+                "label" : "@@form.flatDatePicker.theme.dark@@"
+            },
+            {
+                "value" : "light.css",
+                "label" : "@@form.flatDatePicker.theme.light@@"
+            },
+            {
+                "value" : "confetti.css",
+                "label" : "@@form.flatDatePicker.theme.confetti@@"
+            },
+            {
+                "value" : "airbnb.css",
+                "label" : "@@form.flatDatePicker.theme.airbnb@@"
+            }
+        ]
+    },
+    {
+        "name" : "placeholder",
+        "label" : "@@form.textfield.placeholder@@",
+        "type" : "textfield"
+    },
+    {
+        "name" : "size",
+        "label" : "@@form.textfield.size@@",
+        "type" : "textfield"
+    },
+    {
+        "name" : "readonly",
+        "label" : "@@form.datepicker.readonly@@",
+        "type" : "checkbox",
+        "value" : "False",
+        "options" : [{
+            "value" : "true",
+            "label" : ""
+        }]
+    },
+    {
+        "name" : "readonlyLabel",
+        "label" : "@@form.datepicker.readonlyLabel@@",
+        "type" : "checkbox",
+        "value" : "False",
+        "options" : [{
+            "value" : "true",
+            "label" : ""
+        }]
+    }]
+},
+{
+    "title" : "@@form.datepicker.workflow@@",
+    "properties" : [
+    {
+        "name" : "workflowVariable",
+        "label" : "@@form.datepicker.workflowVariable@@",
+        "type" : "autocomplete",
+        "options_ajax" : "[CONTEXT_PATH]/web/json/console/app[APP_PATH]/workflowVariable/options"
+    }]
+}]
